@@ -49,6 +49,7 @@ int main(void)
 			collect_data(&control, 0, timeMode);
 		}
 		
+	    	// If user presses 'D' then they want to switch time mode
 		else if (k == 16) {
 			if (timeMode == 1)
 				 timeMode = 0;
@@ -58,7 +59,7 @@ int main(void)
 		
 		print_dt(&control, timeMode);
 		advance_dt(&control);
-		avr_wait(950);
+		avr_wait(950); // Accounting for the delay in is_pressed and time to run code
     }
 }
 
@@ -129,7 +130,7 @@ void collect_data(struct dt* dtObj, int key, int timeMode) {
 			char m2[] = "Day DD:";
 			tempDay = update(m2, 0, 8, 1);
 
-			// YEAR
+			// YEAR - need to run twice since update function only collects two inputs
 			char m3[] = "Year YYYY:";
 			y1 = update(m3, 0, 11, 1);
 			y2 = update(m3, 0, 13, 0);
@@ -138,6 +139,7 @@ void collect_data(struct dt* dtObj, int key, int timeMode) {
 			lcd_clr();
 			d_t = 1;
 		}
+		// User wants to set time
 		else {
 		
 			// HOUR
@@ -206,6 +208,10 @@ void collect_data(struct dt* dtObj, int key, int timeMode) {
 	}
 }
 
+// The key is only used to check if update is being called when collecting a year
+// If not collecting the year (key == 1) then refresh screen
+// Otherwise do not refresh screen
+// r and c refer to row and column of LCD screen
 int update(char m[], int r, int c, int key) {
 	int temp;
 	int tempVar;
