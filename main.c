@@ -1,5 +1,5 @@
 /*
- * Project 2.c
+ * main.c
  *
  * Created: 1/19/2022 3:43:18 PM
  * Author : Joseph
