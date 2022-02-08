@@ -10,4 +10,4 @@ D - toggle between 24 hour clock and 12 hour clock <br>
 Number keys are used for inputting date or time.
 
 # Schematic
-![alt text](https://github.com/josephdprince/LCD-Clock/blob/main/P2%20Schematic.pdf)
+![alt text](https://github.com/josephdprince/LCD-Clock/blob/main/P2%20Schematic.png)
