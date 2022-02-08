@@ -9,7 +9,7 @@ struct dt {
 	int second;
 };
 
-int numDaysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+const int numDaysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	
 void init_dt(struct dt* dtObj) {
 	dtObj->year = 2022;
@@ -113,9 +113,13 @@ void print_dt(struct dt* dtObj, int timeMode) {
 		// Print AM/PM
 		lcd_pos(1,9);
 		if (AM)
+			// Print 'A'
 			lcd_put(65);
 		else
+			// Print 'P'
 			lcd_put(80);
+		
+		// Print 'M'
 		lcd_pos(1,10);
 		lcd_put(77);
 	}
